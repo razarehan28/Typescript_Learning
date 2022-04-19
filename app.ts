@@ -147,5 +147,111 @@ interface ages {
   [index: string]: number;
 }
 console.log(list2);
-
-
+// Classes in Typescript
+// Creating classes
+class Students {
+  //field
+  fName: string;
+  lName: string;
+  //constructor
+  constructor(fName: string, lName: string) {
+    this.fName = fName;
+    this.lName = lName;
+  }
+  //function
+  GetFullName(): string {
+    return this.fName + "..." + this.lName;
+  }
+}
+let s = new Students("Rehan", "Raza"); // creating a object
+console.log("Reading attribute value Students as :  " + s.fName); // access the field
+console.log(s.GetFullName()); // access the function
+// Class Inheritance in Typescript
+class shape {
+  Area: number;
+  constructor(Area: number) {
+    this.Area = Area;
+  }
+}
+class circle extends shape {
+  GetShapeValue(): void {
+    console.log("Area of the circle:  " + this.Area);
+  }
+}
+let z = new circle(223);
+z.GetShapeValue();
+// MultiLevel Inheritance in Typescript
+class Root {
+  str: string | undefined;
+}
+class child extends Root {}
+class leaf extends child {}
+let obj = new leaf();
+obj.str = "Hello world";
+console.log(obj.str);
+// Interfaces in classes
+interface ILoan {
+  interest: number;
+}
+class AgreeLoan implements ILoan {
+  interest: number;
+  rebate: number;
+  constructor(interest: number, rebate: number) {
+    this.interest = interest;
+    this.rebate = rebate;
+  }
+}
+let obj1 = new AgreeLoan(10, 1);
+console.log("Interest is : " + obj1.interest + " Rebate is : " + obj1.rebate);
+// Generics in Typescript
+function user1<T>(data: T): T {
+  return data;
+}
+console.log(typeof user1);
+console.log(user1(1));
+console.log(user1("Rehan")); // It will take all type of data type
+// Generic Function
+function getArray<T>(items: T[]): T[] {
+  return new Array<T>().concat(items);
+}
+let myNumArr = getArray<number>([100, 200, 300]);
+let myStrArr = getArray<string>(["Hello", "World"]);
+myNumArr.push(400); // 400
+myStrArr.push("Hello TypeScript"); // Hello typescript
+// myNumArr.push("Hi"); // Compiler Error
+// myStrArr.push(500); // Compiler Error
+// Multiple Type Variables in Generics
+function displayType1<T, U, X>(id: T, name: U, employee: X): void {
+  console.log(typeof id + ", " + typeof name + "," + typeof employee);
+}
+displayType1<number, string, boolean>(1, "Steve", true); // number, string
+// Generic Array Methods
+function displayNames<T>(names: T[]): void {
+  console.log(names.join(", "));
+}
+displayNames<string>(["Rehan", "Raza"]); // Rehan, Raza
+// Generic Interface
+interface KeyPair<T, U> {
+  name: T;
+  value: U;
+}
+let keyvalue1: KeyPair<string, number> = { name: "Rehan", value: 12345 }; // OK
+let keyvalue2: KeyPair<number, number> = { name: 1, value: 345526 }; // OK
+// Generic Class in Typescript
+class KeyValuePair<T, U> {
+  key: T | undefined;
+  val: U | undefined;
+  setKeyValue(key: T, val: U): void {
+    this.key = key;
+    this.val = val;
+  }
+  display(): void {
+    console.log(`Key = ${this.key}, val = ${this.val}`);
+  }
+}
+let keyvaluepair1 = new KeyValuePair<number, string>();
+keyvaluepair1.setKeyValue(1, "Simform");
+keyvaluepair1.display(); //Output: Key = 1, Val = Simform
+let keyvaluepair2 = new KeyValuePair<string, string>();
+keyvaluepair2.setKeyValue("solutions", "Raza");
+keyvaluepair2.display(); //Output: Key = solutions, Val = Raza

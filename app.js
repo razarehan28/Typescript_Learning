@@ -1,3 +1,18 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 //Function
 function Multiply(p1, p2) {
     return p1 * p2;
@@ -129,3 +144,98 @@ strArr["JS"] = "JavaScript";
 console.log(strArr);
 var list2 = ["Rehan", 23, "Simform"];
 console.log(list2);
+// Classes in Typescript
+// Creating classes
+var Students = /** @class */ (function () {
+    //constructor
+    function Students(fName, lName) {
+        this.fName = fName;
+        this.lName = lName;
+    }
+    //function
+    Students.prototype.GetFullName = function () {
+        return this.fName + "..." + this.lName;
+    };
+    return Students;
+}());
+var s = new Students("Rehan", "Raza"); // creating a object
+console.log("Reading attribute value Students as :  " + s.fName); // access the field
+console.log(s.GetFullName()); // access the function
+// Class Inheritance in Typescript
+var shape = /** @class */ (function () {
+    function shape(Area) {
+        this.Area = Area;
+    }
+    return shape;
+}());
+var circle = /** @class */ (function (_super) {
+    __extends(circle, _super);
+    function circle() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    circle.prototype.GetShapeValue = function () {
+        console.log("Area of the circle:  " + this.Area);
+    };
+    return circle;
+}(shape));
+var z = new circle(223);
+z.GetShapeValue();
+// MultiLevel Inheritance in Typescript
+var Root = /** @class */ (function () {
+    function Root() {
+    }
+    return Root;
+}());
+var child = /** @class */ (function (_super) {
+    __extends(child, _super);
+    function child() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return child;
+}(Root));
+var leaf = /** @class */ (function (_super) {
+    __extends(leaf, _super);
+    function leaf() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return leaf;
+}(child));
+var obj = new leaf();
+obj.str = "Hello world";
+console.log(obj.str);
+var AgreeLoan = /** @class */ (function () {
+    function AgreeLoan(interest, rebate) {
+        this.interest = interest;
+        this.rebate = rebate;
+    }
+    return AgreeLoan;
+}());
+var obj1 = new AgreeLoan(10, 1);
+console.log("Interest is : " + obj1.interest + " Rebate is : " + obj1.rebate);
+// Generics in Typescript
+function user1(data) {
+    return data;
+}
+console.log(typeof user1);
+console.log(user1(1));
+console.log(user1("Rehan")); // It will take all type of data type
+// Generic Function
+function getArray(items) {
+    return new Array().concat(items);
+}
+var myNumArr = getArray([100, 200, 300]);
+var myStrArr = getArray(["Hello", "World"]);
+myNumArr.push(400); // 400
+myStrArr.push("Hello TypeScript"); // Hello typescript
+// myNumArr.push("Hi"); // Compiler Error
+// myStrArr.push(500); // Compiler Error
+// Multiple Type Variables in Generics
+function displayType1(id, name, employee) {
+    console.log(typeof id + ", " + typeof name + "," + typeof employee);
+}
+displayType1(1, "Steve", true); // number, string
+// Generic Array Methods
+function displayNames(names) {
+    console.log(names.join(", "));
+}
+displayNames(["Rehan", "Raza"]); // Rehan, Raza
