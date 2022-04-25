@@ -1,14 +1,15 @@
+import Students from "./student";
 //Function
 function Multiply(p1: number, p2: number): number {
   return p1 * p2;
 }
-console.log(Multiply(4, 3));
+console.log("Multiply : ", Multiply(4, 3));
 // 2nd example
 function add(): number {
   return 20 + 20; // if i will put string value it will give error because we have declare number.
 }
 console.log(add());
-// when we are doing for string type
+// // when we are doing for string type
 let fName = (): string => {
   return "Rehan";
 };
@@ -77,7 +78,7 @@ console.log(a);
 // Lambda Functions
 let digit = (x: number) => 10 + x;
 console.log(digit(100));
-// Lambda Statement
+// // Lambda Statement
 let digit1 = (x: number) => {
   x = 10 + x;
   console.log(x);
@@ -123,7 +124,7 @@ let student: IPerson = {
   },
 };
 console.log(student);
-// Interface of array type
+// // Interface of array type
 interface NumList {
   [index: number]: number;
 }
@@ -147,22 +148,22 @@ interface ages {
   [index: string]: number;
 }
 console.log(list2);
-// Classes in Typescript
-// Creating classes
-class Students {
-  //field
-  fName: string;
-  lName: string;
-  //constructor
-  constructor(fName: string, lName: string) {
-    this.fName = fName;
-    this.lName = lName;
-  }
-  //function
-  GetFullName(): string {
-    return this.fName + "..." + this.lName;
-  }
-}
+// // Classes in Typescript
+// // Creating classes
+// class Students {
+//   //field
+//   fName: string;
+//   lName: string;
+//   //constructor
+//   constructor(fName: string, lName: string) {
+//     this.fName = fName;
+//     this.lName = lName;
+//   }
+//   //function
+//   GetFullName(): string {
+//     return this.fName + "..." + this.lName;
+//   }
+// }
 let s = new Students("Rehan", "Raza"); // creating a object
 console.log("Reading attribute value Students as :  " + s.fName); // access the field
 console.log(s.GetFullName()); // access the function
@@ -255,3 +256,4 @@ keyvaluepair1.display(); //Output: Key = 1, Val = Simform
 let keyvaluepair2 = new KeyValuePair<string, string>();
 keyvaluepair2.setKeyValue("solutions", "Raza");
 keyvaluepair2.display(); //Output: Key = solutions, Val = Raza
+
