@@ -1,4 +1,4 @@
-import Students from "./student";
+//import Students from "./student";
 //Function
 function Multiply(p1: number, p2: number): number {
   return p1 * p2;
@@ -164,9 +164,9 @@ console.log(list2);
 //     return this.fName + "..." + this.lName;
 //   }
 // }
-let s = new Students("Rehan", "Raza"); // creating a object
-console.log("Reading attribute value Students as :  " + s.fName); // access the field
-console.log(s.GetFullName()); // access the function
+// let s = new Students("Rehan", "Raza"); // creating a object
+// console.log("Reading attribute value Students as :  " + s.fName); // access the field
+// console.log(s.GetFullName()); // access the function
 // Class Inheritance in Typescript
 class shape {
   Area: number;
@@ -256,4 +256,85 @@ keyvaluepair1.display(); //Output: Key = 1, Val = Simform
 let keyvaluepair2 = new KeyValuePair<string, string>();
 keyvaluepair2.setKeyValue("solutions", "Raza");
 keyvaluepair2.display(); //Output: Key = solutions, Val = Raza
-
+// Enums in Typescipt
+// For Numeric value
+enum Days {
+  Monday = 1, // It is not necessary to assign sequential values to Enum members. They can have any values.
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+}
+let whichDay: Days;
+whichDay = Days.Monday;
+console.log("Today Day:" + whichDay);
+// For string value
+enum Day {
+  monday = "Monday",
+  tuesday = "Tuesday",
+  wednesday = "Wednesday",
+  thursday = "Thursday",
+  friday = "Friday",
+}
+let currentDay: Day;
+currentDay = Day.wednesday;
+console.log("Today is :" + currentDay === "Monday"); // we can match also
+// Heterogeneous Enum in typescript
+enum Status {
+  Active = "ACTIVE",
+  Deactivate = 1,
+  Pending,
+}
+let currentStatus: Status;
+currentStatus = Status.Deactivate;
+console.log("Status is :" + currentStatus); //  enums that contain both string and numeric values.
+// Never type in Typescript
+// function throwError(errorMsg: string): never {
+//   throw new Error(errorMsg);
+// }
+// function keepProcessing(): never {
+//   while (true) {
+//     console.log("I always does something and never ends.");
+//   }
+// }
+// console.log(keepProcessing());
+// Data Modifiers in Typescript
+class Employee {
+  public empId: number | undefined; // public members can be accessed anywhere without any restrictions.
+  empName: string | undefined;
+}
+let emp2 = new Employee();
+emp2.empId = 123;
+emp2.empName = "Raza";
+console.log(emp2);
+// Private in Typescript
+class Emp {
+  //private empCode: number; //  class members are visible only to that class and are not accessible outside the containing class
+  empName: string | undefined;
+}
+let emp3 = new Emp();
+//emp3.empCode = 123; // Compiler Error
+emp3.empName = "Rehan";
+console.log(emp3);
+// ReadOnly keyword in Typescript
+class Employees {
+  readonly empCode: number;
+  empName: string;
+  constructor(code: number, name: string) {
+    this.empCode = code;
+    this.empName = name;
+  }
+}
+let emp4 = new Employees(10, "John");
+//emp4.empCode = 20; //Cannot assign to 'empCode' because it is a read-only property.
+emp4.empName = "Raza";
+console.log(emp4);
+// Static keyword in Typescript
+class Circle {
+  static pi: number = 3.14;
+  static calculateArea(radius: number) {
+    return this.pi * radius * radius;
+  }
+}
+console.log(Circle.pi); // 3.14
+console.log(Circle.calculateArea(5)); //  78.5
